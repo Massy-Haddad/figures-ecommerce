@@ -92,8 +92,12 @@ span.text-red {
 }
 
 .logo {
-  color: gray;
+  color: #f35a5f;
   font-size: 18px;
+}
+
+.logo g, path, ellipse {
+  fill: #f35a5f;
 }
 
 .cart-icon {
