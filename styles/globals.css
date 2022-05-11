@@ -530,6 +530,7 @@ span.text-red {
   width: 70px;
   height: 70px;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .selected-image {
