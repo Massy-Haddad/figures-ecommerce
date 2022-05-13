@@ -215,7 +215,7 @@ span.text-red {
   position: absolute;
   bottom: 0%;
   left: 50%;
-  right: calc(50%, 0);
+  right: calc(50% + 0px);
   transform: translate(-50%, 0);
   /* width: 450px; */
   width: auto;
