@@ -1,8 +1,17 @@
+import { GiVerticalBanner } from "react-icons/gi";
+
 export default {
   name: "banner",
   title: "Banner",
   type: "document",
+  icon: GiVerticalBanner,
+
   fields: [
+    {
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
     {
       name: "image",
       title: "Image",

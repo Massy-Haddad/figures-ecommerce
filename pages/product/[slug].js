@@ -23,7 +23,7 @@ const ProductDetails = ({ product, products }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
@@ -48,6 +48,7 @@ const ProductDetails = ({ product, products }) => {
 
         <div className="product-detail-desc">
           <h1>{name}</h1>
+
           <div className="reviews">
             <div>
               <AiFillStar />
@@ -58,9 +59,11 @@ const ProductDetails = ({ product, products }) => {
             </div>
             <p>(20)</p>
           </div>
+
           <h4>Details: </h4>
           <p>{details}</p>
           <p className="price">${price}</p>
+
           <div className="quantity">
             <h3>Quantity:</h3>
             <p className="quantity-desc">
@@ -73,6 +76,7 @@ const ProductDetails = ({ product, products }) => {
               </span>
             </p>
           </div>
+
           <div className="buttons">
             <button
               type="button"
@@ -89,7 +93,7 @@ const ProductDetails = ({ product, products }) => {
       </div>
 
       <div className="maylike-products-wrapper">
-        <h2>You may also like</h2>
+        <h2>Related products</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
             {products.map((item) => (
@@ -98,7 +102,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -126,12 +130,14 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
+  const productsQuery = `*[_type == "product"][0...8]{    
+    ...,
+    "work": work->,
+    "manufactor": manufactor->
+  }`;
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
-
-  // console.log(product);
 
   return {
     props: { products, product },
