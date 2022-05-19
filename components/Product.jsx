@@ -4,18 +4,7 @@ import Link from "next/link";
 import { urlFor } from "../lib/client";
 
 const Product = ({
-  product: {
-    thumbnail,
-    image,
-    name,
-    slug,
-    price,
-    releaseDate,
-    work,
-    details,
-    specifications,
-    manufactor,
-  },
+  product: { thumbnail, name, slug, price, work, manufactor },
 }) => {
   return (
     <div className="_product-wrapper">

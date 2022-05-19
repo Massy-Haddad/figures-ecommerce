@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import { BiArrowBack } from "react-icons/bi";
 
 import { client, urlFor } from "../../lib/client";
 import { Product } from "../../components";
 import { useStateContext } from "../../context/StateContext";
 
 const ProductDetails = ({ product, products }) => {
+  const router = useRouter();
+
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
@@ -23,8 +28,8 @@ const ProductDetails = ({ product, products }) => {
   };
 
   return (
-    <>
-      <div className="product-detail-container">
+    <div className="app__container">
+      {/* <div className="product-detail-container">
         <div>
           <div className="image-container">
             <img
@@ -101,8 +106,66 @@ const ProductDetails = ({ product, products }) => {
             ))}
           </div>
         </div>
+      </div> */}
+
+      <div className="product-details">
+        <div className="image">
+          {image?.map((item, i) => (
+            <img key={i} src={urlFor(item)} onMouseEnter={() => setIndex(i)} />
+          ))}
+        </div>
+
+        <div className="details">
+          <div className="inner">
+            <Link href={"/"}>
+              <span className="category">
+                <BiArrowBack />
+                Back
+              </span>
+            </Link>
+
+            <h1>{name}</h1>
+            <p>{details}</p>
+
+            <div className="qty-price">
+              <div className="qty">
+                <div
+                  onClick={decreaseQty}
+                  className={`minus ${qty == 1 ? "disabled" : ""}`}
+                >
+                  <AiOutlineMinus />
+                </div>
+
+                <div className="amount">{qty}</div>
+
+                <div onClick={increaseQty} className="add">
+                  <AiOutlinePlus />
+                </div>
+              </div>
+
+              <span className="price">¥&nbsp;{price}</span>
+            </div>
+
+            <div className="btn-row">
+              <button
+                onClick={handleBuyNow}
+                type="button"
+                className="add-to-cart"
+              >
+                BUY NOW
+              </button>
+              <button
+                onClick={() => onAdd(product, qty)}
+                type="button"
+                className="subscribe"
+              >
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -130,7 +193,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = `*[_type == "product"][0...8]{    
+  const productsQuery = `*[_type == "product"][0...10]{    
     ...,
     "work": work->,
     "manufactor": manufactor->

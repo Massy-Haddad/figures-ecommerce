@@ -10,8 +10,8 @@ const Navbar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
-    <div className="navbar-container">
-      <p className="logo">
+    <div className="_navbar">
+      <p className="_navbar-logo">
         <Link href="/">
           <Image src="/assets/logo.png" width="130" height="28" alt="logo" />
         </Link>

@@ -24,7 +24,11 @@ const Home = ({ products, bannerData }) => (
 
 export const getServerSideProps = async () => {
   const query = `*[_type == "product"] | order(price asc){
-    ...,
+    thumbnail,
+    name,
+    slug,
+    price,
+    
     "work": work->,
     "manufactor": manufactor->,
   }`;
