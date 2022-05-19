@@ -1,4 +1,6 @@
-// VARIABLES, MIXIN
+// IMPORTS, VARIABLES, MIXIN
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap");
+
 @mixin transition($seconds) {
   transition: all $seconds linear;
 }
@@ -864,7 +866,7 @@ h1 {
     height: 18px;
     border-radius: 50%;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
@@ -1233,7 +1235,7 @@ h1 {
       }
 
       p {
-        font-size: 20px;
+        font-size: 1rem;
         color: #424550;
         font-weight: 300;
         display: block;
@@ -1243,7 +1245,7 @@ h1 {
         margin-inline-end: 0px;
 
         @media screen and (max-width: 600px) {
-          font-size: 18px;
+          // font-size: 18px;
         }
       }
 
@@ -1307,7 +1309,7 @@ h1 {
 
           cursor: pointer;
           height: 48px;
-          padding: 0 48px;
+          padding: 0 3rem;
           border: none;
           border-radius: 8px;
 
@@ -1316,8 +1318,9 @@ h1 {
           font-weight: 500;
           letter-spacing: 0.06rem;
 
-          @media screen and (max-width: 600px) {
+          @media screen and (max-width: 900px) {
           width: 100%;
+          padding: 0;
         }
         }
 
