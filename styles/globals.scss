@@ -1178,32 +1178,34 @@ h1 {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  // margin-top: 4.2rem;
 
   .image,
   .details {
+    @include transition(0.3s);
     height: 100%;
     display: flex;
-    flex: 50%;
+    width: 50%;
   }
 
   .image {
-    @include transition(0.3s);
-
     // background: #dfdfdf;
+    max-height: 100vh;
     align-items: flex-start;
     justify-content: center;
+
+    .swiper {
+      height: 100%;
+    }
 
     img {
       height: 100%;
       width: auto;
-      // object-fit: contain;
       object-fit: cover;
     }
   }
 
   .details {
-    @include transition(0.3s);
-
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1215,6 +1217,7 @@ h1 {
       position: relative;
 
       .category {
+        cursor: pointer;
         display: flex;
         align-items: center;
         font-size: 1rem;
@@ -1243,10 +1246,6 @@ h1 {
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-
-        @media screen and (max-width: 600px) {
-          // font-size: 18px;
-        }
       }
 
       .qty-price {
@@ -1258,6 +1257,11 @@ h1 {
           display: flex;
           align-items: center;
           user-select: none;
+
+          .amount {
+            width: 1rem;
+            text-align: center;
+          }
 
           .add,
           .minus {
@@ -1272,8 +1276,6 @@ h1 {
             cursor: pointer;
             border-radius: 50%;
             border: 1px solid #282828;
-
-            @include transition(0.3s);
           }
 
           .minus {
@@ -1305,8 +1307,6 @@ h1 {
         margin-top: 3rem;
 
         button {
-          @include transition(0.3s);
-
           cursor: pointer;
           height: 48px;
           padding: 0 3rem;
@@ -1319,9 +1319,9 @@ h1 {
           letter-spacing: 0.06rem;
 
           @media screen and (max-width: 900px) {
-          width: 100%;
-          padding: 0;
-        }
+            width: 100%;
+            padding: 0;
+          }
         }
 
         .add-to-cart {
@@ -1339,17 +1339,17 @@ h1 {
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     flex-direction: column;
     width: 100%;
 
     .image,
     .details {
-      flex: 100%;
+      width: 100%;
     }
 
     .details {
-      padding: 2rem 2rem;
+      padding: 2rem 3rem;
 
       .inner {
         width: 100%;
@@ -1357,7 +1357,3 @@ h1 {
     }
   }
 }
-
-// Link {
-//   cursor: pointer;
-// }

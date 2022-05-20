@@ -1,10 +1,10 @@
-import { BsPersonSquare } from "react-icons/bs";
+import { GiHoodedFigure } from "react-icons/gi";
 
 export default {
   name: "product",
   title: "Product",
   type: "document",
-  icon: BsPersonSquare,
+  icon: GiHoodedFigure,
 
   fields: [
     {
