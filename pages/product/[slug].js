@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import {
   AiOutlineMinus,
@@ -17,20 +17,13 @@ import "swiper/css/pagination";
 
 import { useStateContext } from "../../context/StateContext";
 import { client, urlFor } from "../../lib/client";
+import { buttonVariant } from "../../lib/animations";
 import { Product } from "../../components";
-
-const buttonVariant = {
-  hover: {
-    scale: 1.05,
-  },
-  tap: {
-    scale: 0.95,
-  },
-};
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
-  const [index, setIndex] = useState(0);
+
+  const router = useRouter();
 
   const { decreaseQty, increaseQty, qty, onAdd, setShowCart } =
     useStateContext();
@@ -41,7 +34,12 @@ const ProductDetails = ({ product, products }) => {
   };
 
   return (
-    <div className="app__container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="app__container"
+    >
       <div className="product-details">
         <div className="image">
           <Swiper
@@ -71,12 +69,10 @@ const ProductDetails = ({ product, products }) => {
 
         <div className="details">
           <div className="inner">
-            <Link href={"/"}>
-              <span className="category">
-                <BiArrowBack />
-                Back
-              </span>
-            </Link>
+            <span className="category" onClick={() => router.back()}>
+              <BiArrowBack />
+              Back
+            </span>
 
             <h1>{name}</h1>
             <p>{details}</p>
@@ -134,7 +130,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

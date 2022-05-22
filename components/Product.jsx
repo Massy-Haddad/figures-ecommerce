@@ -1,13 +1,31 @@
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { urlFor } from "../lib/client";
+
+const easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
 
 const Product = ({
   product: { thumbnail, name, slug, price, work, manufactor },
 }) => {
   return (
-    <div className="_product-wrapper">
+    <motion.div variants={fadeInUp} className="_product-wrapper">
       <Link href={`/product/${slug.current}`}>
         <div className="_product-item">
           <div className="_product-item-image">
@@ -23,12 +41,9 @@ const Product = ({
               <div className="surtitle">{work.name}</div>
               <div className="title">{name}</div>
               <div className="subtitle">
-                <img
-                  src="https://www.tsume-art.com/storage/app/uploads/public/5e3/d31/4d7/thumb_19002_0x30_0_0_auto.png"
-                  alt="High Quality"
-                />
+                <img src={urlFor(manufactor.logo)} alt="High Quality" />
+                By&nbsp;{manufactor.name}
               </div>
-              <div className="subtitle">By&nbsp;{manufactor.name}</div>
             </div>
 
             <div className="_item-price">
@@ -37,7 +52,7 @@ const Product = ({
           </div>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 
