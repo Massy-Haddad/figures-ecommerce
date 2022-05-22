@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Keyboard } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -12,6 +8,12 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
+
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Keyboard, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 
 import { useStateContext } from "../../context/StateContext";
 import { client, urlFor } from "../../lib/client";
@@ -46,13 +48,17 @@ const ProductDetails = ({ product, products }) => {
             slidesPerView={"auto"}
             centeredSlides={true}
             spaceBetween={2}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             keyboard={{
               enabled: true,
             }}
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination, Keyboard]}
+            modules={[Pagination, Keyboard, Autoplay]}
             className="mySwiper"
           >
             {image.map((item, i) => (
