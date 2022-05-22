@@ -11,11 +11,11 @@ const Navbar = () => {
 
   return (
     <div className="_navbar">
-      <p className="_navbar-logo">
-        <Link href="/">
+      <Link href="/">
+        <p className="_navbar-logo">
           <Image src="/assets/logo.png" width="130" height="28" alt="logo" />
-        </Link>
-      </p>
+        </p>
+      </Link>
 
       <button
         type="button"

@@ -25,8 +25,8 @@ const Home = ({ products, bannerData }) => (
     </div>
 
     <motion.div variants={stagger} className="_products-container">
-      {products?.map((product) => (
-        <Product key={product._id} product={product} />
+      {products?.map((product, index) => (
+        <Product key={product._id + index} product={product} />
       ))}
     </motion.div>
 

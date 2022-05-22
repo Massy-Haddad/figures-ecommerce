@@ -46,6 +46,7 @@ const ProductDetails = ({ product, products }) => {
             slidesPerView={"auto"}
             centeredSlides={true}
             spaceBetween={2}
+            loop={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,

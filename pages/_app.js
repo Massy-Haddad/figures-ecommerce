@@ -1,10 +1,10 @@
 import React from "react";
-
-import "../styles/globals.scss";
-import { Layout, Navbar } from "../components";
-import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
 import { AnimatePresence } from "framer-motion";
+
+import "../styles/globals.scss";
+import { Layout } from "../components";
+import { StateContext } from "../context/StateContext";
 
 function MyApp({ Component, pageProps, router }) {
   return (
