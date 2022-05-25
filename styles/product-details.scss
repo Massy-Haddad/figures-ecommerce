@@ -1,4 +1,5 @@
 .product-details {
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -8,7 +9,7 @@
 
   .image,
   .details {
-    @include transition(0.3s);
+    @include transition(0.2s);
     height: 100%;
     display: flex;
     width: 50%;
@@ -161,6 +162,20 @@
     }
   }
 
+  // tablets
+  @media (max-width: 900px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .image {
+      height: 60%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+
+  // tablets and phones
   @media screen and (max-width: 900px) {
     flex-direction: column;
     width: 100%;
@@ -170,8 +185,19 @@
       width: 100%;
     }
 
+    // less space for image, more for details
+    // .image {
+    //   height: 50vh;
+
+    //   img {
+    //     height: auto;
+    //     width: 100%;
+    //   }
+    // }
+
     .details {
-      padding: 2rem 3rem;
+      justify-content: flex-start;
+      padding: 1rem 3rem;
 
       .inner {
         width: 100%;

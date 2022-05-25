@@ -17,19 +17,23 @@
 
   ._product-item {
     cursor: pointer;
+    display: block;
     text-align: center;
     text-decoration: none;
     position: relative;
     margin-bottom: 1.5rem;
-    border-radius: 16px;
+
+    border-radius: inherit;
     border: 1px solid transparent;
-    display: block;
+    border-radius: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 12px 0 rgb(34 34 34 / 7%);
+    
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 
-    box-shadow: 0 0 12px 0 rgb(34 34 34 / 7%);
 
     &:hover {
       border: 1px solid #e6e9ed;
@@ -76,8 +80,8 @@
     overflow: hidden;
     position: relative;
 
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 
     img {
       left: 0;
@@ -86,8 +90,6 @@
       top: 0;
       width: 100%;
       object-fit: cover;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
 
       -webkit-transition: -webkit-transform 0.5s ease;
       -moz-transition: -moz-transform 0.5s ease;
@@ -138,6 +140,7 @@
 
     img {
       max-height: 100px;
+      padding: 0rem 2rem;
       position: relative;
       z-index: 1;
     }
@@ -150,8 +153,8 @@
     position: relative;
     z-index: 2;
 
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 
     ._item-titles {
       font-size: 1rem;
@@ -224,11 +227,11 @@
       -moz-transition: -moz-transform 0.25s ease;
       -o-transition: -o-transform 0.25s ease;
       transition: transform 0.25s ease;
-      -webkit-transform: translateY(-100px);
-      -moz-transform: translateY(-100px);
-      -ms-transform: translateY(-100px);
-      -o-transform: translateY(-100px);
-      transform: translateY(-100px);
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+      -o-transform: translateY(-100%);
+      transform: translateY(-100%);
     }
 
     ._product-item-license::before {
@@ -247,13 +250,13 @@
   }
 }
 
+// MARQUEE
 .marquee {
   ._product-wrapper {
     min-width: 200px;
   }
 }
 
-// MARQUEE
 .marquee {
     position: relative;
     width: 100vw;

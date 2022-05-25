@@ -20,6 +20,32 @@ import { client, urlFor } from "../../lib/client";
 import { buttonVariant } from "../../lib/animations";
 import { Product } from "../../components";
 
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
 
@@ -35,12 +61,13 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial="initial"
+      animate="animate"
       exit={{ opacity: 0 }}
+      // transition={{ duration: 0.3 }}
       className="app__container"
     >
-      <div className="product-details">
+      <motion.div className="product-details">
         <div className="image">
           <Swiper
             slidesPerView={"auto"}
@@ -62,23 +89,44 @@ const ProductDetails = ({ product, products }) => {
           >
             {image.map((item, i) => (
               <SwiperSlide>
-                <img key={i} src={urlFor(item)} alt="figure" />
+                <motion.img
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: 300, opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.2, stiffness: 1000 }}
+                  key={i}
+                  src={urlFor(item)}
+                  alt="figure"
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
         <div className="details">
-          <div className="inner">
-            <span className="category" onClick={() => router.back()}>
+          <motion.div variants={stagger} className="inner">
+            <motion.div
+              variants={fadeInUp}
+              whileInView={fadeInUp}
+              className="category"
+              onClick={() => router.back()}
+            >
               <BiArrowBack />
               Back
-            </span>
+            </motion.div>
 
-            <h1>{name}</h1>
-            <p>{details}</p>
+            <motion.h1 variants={fadeInUp} whileInView={fadeInUp}>
+              {name}
+            </motion.h1>
+            <motion.p variants={fadeInUp} whileInView={fadeInUp}>
+              {details}
+            </motion.p>
 
-            <div className="qty-price">
+            <motion.div
+              variants={fadeInUp}
+              whileInView={fadeInUp}
+              className="qty-price"
+            >
               <div className="qty">
                 <motion.div
                   variants={buttonVariant}
@@ -104,9 +152,13 @@ const ProductDetails = ({ product, products }) => {
               </div>
 
               <span className="price">¥&nbsp;{price}</span>
-            </div>
+            </motion.div>
 
-            <div className="btn-row">
+            <motion.div
+              variants={fadeInUp}
+              whileInView={fadeInUp}
+              className="btn-row"
+            >
               <motion.button
                 variants={buttonVariant}
                 whileHover="hover"
@@ -127,10 +179,10 @@ const ProductDetails = ({ product, products }) => {
               >
                 ADD TO CART
               </motion.button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

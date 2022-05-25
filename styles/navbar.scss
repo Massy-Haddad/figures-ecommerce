@@ -1,6 +1,7 @@
 ._navbar {
-  width: 100%;
+  @include transition(0.3s);
 
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,6 +18,8 @@
   z-index: 3;
 
   ._navbar-logo {
+    @include transition(0.3s);
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -24,6 +27,7 @@
     img {
       width: 130px;
       height: 28px;
+      filter: brightness(0) invert(0);
 
       @media screen and (min-width: 2000px) {
         width: 180px;
@@ -42,10 +46,6 @@
     background-color: transparent;
   }
 
-  .cart-icon:hover {
-    transform: scale(1.1, 1.1);
-  }
-
   .cart-item-qty {
     position: absolute;
     right: -8px;
@@ -57,5 +57,9 @@
     border-radius: 50%;
     text-align: center;
     font-weight: 500;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0.5rem 2rem;
   }
 }

@@ -21,13 +21,14 @@ export default {
       },
     },
     {
-      name: "buttonText",
-      title: "ButtonText",
-      type: "string",
-    },
-    {
       name: "product",
       title: "Product",
+      type: "reference",
+      to: { type: "product" },
+    },
+    {
+      name: "buttonText",
+      title: "ButtonText",
       type: "string",
     },
     {
