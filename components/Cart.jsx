@@ -7,11 +7,53 @@ import {
   AiOutlineShopping,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
+import { AnimatePresence, motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import { getStripe } from "../lib";
+import { fadeInUp, stagger } from "./../lib/animations";
+
+const cartVariants = {
+  open: {
+    x: "0%",
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 0.5,
+      // staggerChildren: stagger,
+    },
+  },
+  closed: {
+    x: "100%",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      // staggerChildren: stagger,
+    },
+  },
+};
+
+const filterVariants = {
+  open: {
+    opacity: 1,
+    display: "block",
+    visibility: "visible",
+    transition: {
+      duration: 2,
+    },
+  },
+  closed: {
+    opacity: 0,
+    display: "none",
+    transition: {
+      duration: 2,
+    },
+  },
+};
 
 const Cart = () => {
   const cartRef = useRef();
@@ -19,6 +61,7 @@ const Cart = () => {
     totalPrice,
     totalQuantities,
     cartItems,
+    showCart,
     setShowCart,
     increaseQty,
     decreaseQty,
@@ -48,9 +91,22 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-wrapper" ref={cartRef}>
-      <div className="cart-container">
-        <button
+    <>
+      <motion.div
+        variants={filterVariants}
+        initial={false}
+        animate={showCart ? "open" : "closed"}
+        className="cart-wrapper"
+        onClick={() => setShowCart(false)}
+      />
+      <motion.div
+        initial={false}
+        variants={cartVariants}
+        animate={showCart ? "open" : "closed"}
+        className="cart-container"
+      >
+        {console.log(showCart)}
+        <motion.button
           type="button"
           className="cart-heading"
           onClick={() => setShowCart(false)}
@@ -58,7 +114,7 @@ const Cart = () => {
           <AiOutlineLeft />
           <span className="heading">Your Cart</span>
           <span className="cart-num-items">({totalQuantities} items)</span>
-        </button>
+        </motion.button>
 
         {cartItems.length < 1 && (
           <div className="empty-cart">
@@ -145,8 +201,8 @@ const Cart = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 };
 

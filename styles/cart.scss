@@ -1,77 +1,81 @@
 .cart-wrapper {
-    width: 100vw;
-    background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
     position: fixed;
     right: 0;
     top: 0;
     z-index: 100;
-    /* will-change: transform; */
-    transition: all 1s ease-in-out;
-  }
-  
-  .cart-container {
-    height: 100vh;
-    width: 600px;
+}
+
+.cart-container {
+  height: 100vh;
+  width: 500px;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    z-index: 100;
     background-color: white;
-    float: right;
-    padding: 1.5rem 1rem;
-    position: relative;
+  border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
   }
 
-  .cart-heading {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    gap: 2px;
-    margin-left: 10px;
-    border: none;
-    background-color: transparent;
-  }
-  
-  .cart-heading .heading {
-    margin-left: 10px;
-  }
-  
-  .cart-num-items {
-    margin-left: 10px;
-    color: #f02d34;
-  }
-  
-  .empty-cart {
-    margin: 40px;
-    text-align: center;
-  }
-  
-  .empty-cart h3 {
-    font-weight: 600;
-    font-size: 20px;
-  }
+.cart-heading {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 2px;
+  margin-left: 10px;
+  border: none;
+  background-color: transparent;
+}
 
-  .cart-bottom {
-    position: absolute;
-    bottom: 12px;
-    right: 5px;
-    width: 100%;
-    padding: 30px 65px;
-  }
+.cart-heading .heading {
+  margin-left: 10px;
+}
 
-  .buttons .add-to-cart {
-    padding: 10px 20px;
-    border: 1px solid #f02d34;
-    margin-top: 40px;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: white;
-    color: #f02d34;
-    cursor: pointer;
-    width: 200px;
-    transform: scale(1, 1);
-    transition: transform 0.5s ease;
-  }
-  
-  .buttons .add-to-cart:hover {
-    transform: scale(1.1, 1.1);
-  }
-  
+.cart-num-items {
+  margin-left: 10px;
+  color: #f02d34;
+}
+
+.empty-cart {
+  margin: 40px;
+  text-align: center;
+}
+
+.empty-cart h3 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.cart-bottom {
+  position: absolute;
+  bottom: 12px;
+  right: 5px;
+  width: 100%;
+  padding: 30px 65px;
+}
+
+.buttons .add-to-cart {
+  padding: 10px 20px;
+  border: 1px solid #f02d34;
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  color: #f02d34;
+  cursor: pointer;
+  width: 200px;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
+.buttons .add-to-cart:hover {
+  transform: scale(1.1, 1.1);
+}
