@@ -28,7 +28,7 @@ const cartVariants = {
   closed: {
     x: "100%",
     transition: {
-      delay: 0.5,
+      // delay: 0.5,
       type: "spring",
       stiffness: 100,
       damping: 20,
@@ -43,14 +43,14 @@ const filterVariants = {
     display: "block",
     visibility: "visible",
     transition: {
-      duration: 2,
+      duration: 1,
     },
   },
   closed: {
     opacity: 0,
     display: "none",
     transition: {
-      duration: 2,
+      duration: 1,
     },
   },
 };

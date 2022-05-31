@@ -70,22 +70,29 @@ const ProductDetails = ({ product, products }) => {
       <motion.div className="product-details">
         <div className="image">
           <Swiper
+            // Style
+            className="mySwiper"
             slidesPerView={"auto"}
             centeredSlides={true}
             spaceBetween={2}
-            loop={true}
+            // Autoplay
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              watchSlidesProgress: true,
+              watchVisibility: true,
             }}
+            // Controls
             keyboard={{
               enabled: true,
             }}
+            // Pagination
             pagination={{
               clickable: true,
             }}
+            loop={true}
+            // Modules
             modules={[Pagination, Keyboard, Autoplay]}
-            className="mySwiper"
           >
             {image.map((item, i) => (
               <SwiperSlide>

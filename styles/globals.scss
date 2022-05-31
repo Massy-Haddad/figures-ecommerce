@@ -65,14 +65,13 @@ h1 {
   font-size: 2em;
 }
 h2 {
-  font-size: 1.75;
+  font-size: 1.75em;
 }
 
 .main-container {
+  width: 100%;
   // max-width: 1400px;
   // margin: auto;
-  // margin: 3rem auto auto auto;
-  width: 100%;
 }
 
 .layout {
