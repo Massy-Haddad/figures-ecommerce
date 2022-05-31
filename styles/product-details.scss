@@ -75,50 +75,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        .qty {
-          display: flex;
-          align-items: center;
-          user-select: none;
-
-          .amount {
-            width: 1rem;
-            text-align: center;
-          }
-
-          .add,
-          .minus {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            margin: 1rem 1rem;
-            height: 2rem;
-            width: 2rem;
-
-            cursor: pointer;
-            border-radius: 50%;
-            border: 1px solid #282828;
-          }
-
-          .minus {
-            margin-left: 0;
-          }
-
-          .disabled {
-            background: #dfdfdf;
-            color: #787878;
-            border: none;
-            cursor: default;
-          }
-        }
-
-        .price {
-          color: #282828;
-          font-weight: 700;
-          font-size: 1.4rem;
-          user-select: none;
-        }
       }
 
       .btn-row {

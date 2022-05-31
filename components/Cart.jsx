@@ -6,14 +6,15 @@ import {
   AiOutlineLeft,
   AiOutlineShopping,
 } from "react-icons/ai";
+import { FiTrash } from "react-icons/fi";
 import { TiDeleteOutline } from "react-icons/ti";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import { getStripe } from "../lib";
-import { fadeInUp, stagger } from "./../lib/animations";
+import { buttonVariant, stagger } from "./../lib/animations";
 
 const cartVariants = {
   open: {
@@ -100,8 +101,8 @@ const Cart = () => {
         onClick={() => setShowCart(false)}
       />
       <motion.div
-        initial={false}
         variants={cartVariants}
+        initial={false}
         animate={showCart ? "open" : "closed"}
         className="cart-container"
       >
@@ -134,56 +135,100 @@ const Cart = () => {
           </div>
         )}
 
-        <div className="product-container">
+        <div className="cart-product-container">
           {cartItems.length >= 1 &&
             cartItems.map((item, index) => (
-              <div className="product" key={index}>
-                <img
-                  src={urlFor(item?.image[0])}
-                  className="cart-product-image"
-                />
+              <div className="cart-product" key={item?._id}>
+                <div className="image">
+                  <img src={urlFor(item.thumbnail)} alt="" />
+                </div>
 
-                <div className="item-desc">
-                  <div className="flex top">
-                    <h5>{item?.name}</h5>
-                    <h4>${item?.price}</h4>
+                <div className="details">
+                  <div className="title-price">
+                    <span>{item?.name}</span>
+                    <span className="price">¥&nbsp;{item?.price}</span>
                   </div>
 
-                  <div className="flex bottom">
-                    <div>
-                      <p className="quantity-desc">
-                        <span
-                          className="minus"
-                          onClick={() =>
-                            toggleCartItemQuantity(item._id, "dec")
-                          }
-                        >
-                          <AiOutlineMinus />
-                        </span>
+                  <div className="qty-remove">
+                    <div className="qty">
+                      <motion.div
+                        variants={buttonVariant}
+                        whileHover="hover"
+                        whileTap="tap"
+                        onClick={() => toggleCartItemQuantity(item._id, "dec")}
+                        className={`minus ${
+                          item?.quantity == 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <AiOutlineMinus />
+                      </motion.div>
 
-                        <span className="num">{item.quantity}</span>
+                      <div className="amount">{item?.quantity}</div>
 
-                        <span
-                          className="plus"
-                          onClick={() =>
-                            toggleCartItemQuantity(item._id, "inc")
-                          }
-                        >
-                          <AiOutlinePlus />
-                        </span>
-                      </p>
+                      <motion.div
+                        variants={buttonVariant}
+                        whileHover="hover"
+                        whileTap="tap"
+                        onClick={() => toggleCartItemQuantity(item._id, "inc")}
+                        className="add"
+                      >
+                        <AiOutlinePlus />
+                      </motion.div>
                     </div>
-
-                    <button
-                      type="button"
-                      className="remove-item"
-                      onClick={() => onRemove(item)}
-                    >
-                      <TiDeleteOutline />
-                    </button>
+                    <motion.button type="button" variants={buttonVariant} whileHover="hover" whileTap="tap" onClick={() => onRemove(item)}>
+                      <FiTrash size={15} />
+                    </motion.button>
                   </div>
                 </div>
               </div>
+
+              // <div className="cart-product" key={index}>
+              //   <img
+              //     src={urlFor(item?.image[0])}
+              //     className="cart-product-image"
+              //   />
+
+              //   <div className="item-desc">
+              //     <div className="flex top">
+              //       <h5>{item?.name}</h5>
+              //       <h4>${item?.price}</h4>
+              //     </div>
+
+              //     <div className="flex bottom">
+              //       <div>
+              //         <p className="quantity-desc">
+              //           <span
+              //             className="minus"
+              //             onClick={() =>
+              //               toggleCartItemQuantity(item._id, "dec")
+              //             }
+              //           >
+              //             <AiOutlineMinus />
+              //           </span>
+
+              //           <span className="num">{item.quantity}</span>
+
+              //           <span
+              //             className="plus"
+              //             onClick={() =>
+              //               toggleCartItemQuantity(item._id, "inc")
+              //             }
+              //           >
+              //             <AiOutlinePlus />
+              //           </span>
+              //         </p>
+              //       </div>
+
+              //       <button
+              //         type="button"
+              //         className="remove-item"
+              //         onClick={() => onRemove(item)}
+              //       >
+              //         <TiDeleteOutline />
+              //       </button>
+              //     </div>
+              //   </div>
+              // </div>
             ))}
         </div>
 

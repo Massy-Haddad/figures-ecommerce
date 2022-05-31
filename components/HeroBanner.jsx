@@ -15,7 +15,6 @@ const HeroBanner = ({ heroBanner }) => {
         />
 
         <div>
-          {console.log(heroBanner)}
           {/* <Link href={`/product/${heroBanner.product.slug}`}> */}
           <Link href="#products">
             <button type="button">{heroBanner.buttonText}</button>
