@@ -175,8 +175,8 @@ const Cart = () => {
                         <AiOutlinePlus />
                       </motion.div>
                     </div>
-                    <motion.button type="button" variants={buttonVariant} whileHover="hover" whileTap="tap" onClick={() => onRemove(item)}>
-                      <FiTrash size={15} />
+                    <motion.button type="button" className="remove-item" variants={buttonVariant} whileHover="hover" whileTap="tap" onClick={() => onRemove(item)}>
+                      <FiTrash />
                     </motion.button>
                   </div>
                 </div>

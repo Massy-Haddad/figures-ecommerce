@@ -16,7 +16,7 @@
   top: 0;
   bottom: 0;
   right: 0;
-  padding: 1rem 2rem;
+  padding: 1rem;
   z-index: 100;
   background-color: white;
   border-top-left-radius: 12px;
@@ -66,12 +66,12 @@
       .image {
         display: flex;
         height: 100%;
-        width: 30%;
+        width: 25%;
         border-radius: inherit;
 
         img {
           border-radius: inherit;
-          height: 150px;
+          height: 125px;
           width: 100%;
           object-fit: cover;
         }
@@ -81,7 +81,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 70%;
+        width: 75%;
         margin-left: 1rem;
         flex-direction: column;
 
@@ -95,6 +95,7 @@
         }
 
         .title-price {
+          gap: 1rem;
           align-items: flex-start;
 
           .price {
@@ -108,20 +109,10 @@
           button {
             width: 35px;
             height: 35px;
-            color: #ffff;
-            border-radius: 15%;
-            background: #ff6961;
+            color: #f02d34;
           }
         }
       }
     }
   }
-}
-
-.remove-item {
-  font-size: 24px;
-  color: #f02d34;
-  cursor: pointer;
-  background: transparent;
-  border: none;
 }
