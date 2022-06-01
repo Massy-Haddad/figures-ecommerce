@@ -1,10 +1,10 @@
-import { GiHoodedFigure } from "react-icons/gi";
+import { GiLaurelCrown } from "react-icons/gi";
 
 export default {
   name: "product",
   title: "Product",
   type: "document",
-  icon: GiHoodedFigure,
+  icon: GiLaurelCrown,
 
   fields: [
     {

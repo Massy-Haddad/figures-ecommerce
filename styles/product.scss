@@ -3,6 +3,16 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
+  margin: auto;
+  max-width: 80%;
+
+  @media screen and (max-width: 900px) {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    max-width: 100%;
+  }
 }
 
 ._product-wrapper {
@@ -28,7 +38,7 @@
     border-radius: 15px;
     border-radius: 15px;
     box-shadow: 0 0 12px 0 rgb(34 34 34 / 7%);
-    
+
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -63,11 +73,9 @@
         -o-transition: opacity 0.5s ease 0.25s;
         transition: opacity 0.5s ease 0.25s;
         opacity: 1;
-        background-image: linear-gradient(
-          -180deg,
-          rgba(0, 0, 0, 0) 0%,
-          black 100%
-        );
+        background-image: linear-gradient(-180deg,
+            rgba(0, 0, 0, 0) 0%,
+            black 100%);
       }
     }
   }
@@ -131,11 +139,9 @@
       -o-transition: opacity 0.5s ease;
       transition: opacity 0.5s ease;
       opacity: 0;
-      background-image: linear-gradient(
-        -180deg,
-        rgba(0, 0, 0, 0) 0%,
-        black 100%
-      );
+      background-image: linear-gradient(-180deg,
+          rgba(0, 0, 0, 0) 0%,
+          black 100%);
     }
 
     img {
@@ -179,6 +185,8 @@
         align-items: center;
         justify-content: center;
         margin-top: 0.75rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
 
         font-weight: 300;
         font-size: 0.625rem;
@@ -241,11 +249,9 @@
       -o-transition: opacity 0.5s ease 0.25s;
       transition: opacity 0.5s ease 0.25s;
       opacity: 1;
-      background-image: linear-gradient(
-        -180deg,
-        rgba(0, 0, 0, 0) 0%,
-        black 100%
-      );
+      background-image: linear-gradient(-180deg,
+          rgba(0, 0, 0, 0) 0%,
+          black 100%);
     }
   }
 }
@@ -258,48 +264,49 @@
 }
 
 .marquee {
-    position: relative;
-    width: 100vw;
-    max-width: 100%;
-    min-height: 70vh;
-    overflow-x: hidden;
-  
-    .track {
-      position: absolute;
-      will-change: transform;
-      animation: marquee 8s linear infinite;
-      width: 180%;
-  
-      &:hover {
-        animation-play-state: paused;
-      }
-    }
-  
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 70vh;
+  overflow-x: hidden;
+
+  .track {
+    position: absolute;
+    will-change: transform;
+    animation: marquee 8s linear infinite;
+    width: 180%;
+
+    &:hover {
+      animation-play-state: paused;
     }
   }
-  
-  .maylike-products-wrapper {
-    margin-top: 120px;
-  
-    h2 {
-      text-align: center;
-      margin: 50px;
-      color: #324d67;
-  
-      font-size: 28px;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
     }
   }
-  
-  .maylike-products-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+}
+
+.maylike-products-wrapper {
+  margin-top: 120px;
+
+  h2 {
+    text-align: center;
+    margin: 50px;
+    color: #324d67;
+
+    font-size: 28px;
   }
+}
+
+.maylike-products-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
