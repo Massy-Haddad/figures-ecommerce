@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { AiOutlineShopping } from "react-icons/ai";
 
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
+import { buttonVariant } from "../lib/animations";
 
 const Navbar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
@@ -17,14 +19,17 @@ const Navbar = () => {
         </p>
       </Link>
 
-      <button
+      <motion.button
+        variants={buttonVariant}
+        whileHover="hover"
+        whileTap="tap"
         type="button"
         className="cart-icon"
         onClick={() => setShowCart(true)}
       >
         <AiOutlineShopping />
         <span className="cart-item-qty">{totalQuantities}</span>
-      </button>
+      </motion.button>
 
       <Cart />
     </div>

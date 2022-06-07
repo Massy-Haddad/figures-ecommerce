@@ -64,7 +64,6 @@ const ProductDetails = ({ product, products }) => {
       initial="initial"
       animate="animate"
       exit={{ opacity: 0 }}
-      // transition={{ duration: 0.3 }}
       className="app__container"
     >
       <motion.div className="product-details">
@@ -172,7 +171,7 @@ const ProductDetails = ({ product, products }) => {
                 whileTap="tap"
                 onClick={handleBuyNow}
                 type="button"
-                className="add-to-cart"
+                className="call-to-action"
               >
                 BUY NOW
               </motion.button>
@@ -182,7 +181,6 @@ const ProductDetails = ({ product, products }) => {
                 whileTap="tap"
                 onClick={() => onAdd(product, qty)}
                 type="button"
-                className="subscribe"
               >
                 ADD TO CART
               </motion.button>

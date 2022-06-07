@@ -76,50 +76,12 @@
         align-items: center;
         justify-content: space-between;
       }
-
-      .btn-row {
-        @include transition(0.3s);
-
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-top: 3rem;
-
-        button {
-          cursor: pointer;
-          height: 48px;
-          padding: 0 3rem;
-          border: none;
-          border-radius: 8px;
-
-          font-size: 0.875rem;
-          text-transform: uppercase;
-          font-weight: 500;
-          letter-spacing: 0.06rem;
-
-          @media screen and (max-width: 900px) {
-            width: 100%;
-            padding: 0;
-          }
-        }
-
-        .add-to-cart {
-          background: #2d89fa;
-          color: #fff;
-          margin-right: 24px;
-        }
-
-        .subscribe {
-          background: transparent;
-          background: #d3d3d3;
-          color: #424550;
-        }
-      }
     }
   }
 
   // tablets
   @media (max-width: 900px) {
+
     /* tablet, landscape iPad, lo-res laptops ands desktops */
     .image {
       height: 60%;

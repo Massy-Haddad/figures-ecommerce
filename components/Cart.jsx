@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   AiOutlineMinus,
@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import { getStripe } from "../lib";
-import { buttonVariant, stagger } from "./../lib/animations";
+import { buttonVariant } from "./../lib/animations";
 
 const cartVariants = {
   open: {
@@ -55,8 +55,45 @@ const filterVariants = {
   },
 };
 
+const cartItemsVariants = {
+  open: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.02,
+      x: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    x: 50,
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.5,
+      staggerDirection: -1,
+      x: { stiffness: 1000 },
+    },
+  },
+};
+
+const cartItemVariants = {
+  open: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      x: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    x: 50,
+    opacity: 0,
+    transition: {
+      x: { stiffness: 1000 },
+    },
+  },
+};
+
 const Cart = () => {
-  const cartRef = useRef();
   const {
     totalPrice,
     totalQuantities,
@@ -116,25 +153,11 @@ const Cart = () => {
           <span className="cart-num-items">({totalQuantities} items)</span>
         </motion.button>
 
-        {cartItems.length < 1 && (
-          <div className="empty-cart">
-            <AiOutlineShopping size={150} />
-
-            <h3>Your shopping bag is empty</h3>
-
-            <Link href="/">
-              <button
-                type="button"
-                onClick={() => setShowCart(false)}
-                className="btn"
-              >
-                Continue Shopping
-              </button>
-            </Link>
-          </div>
-        )}
-
-        <div className="cart-product-container">
+        <motion.div
+          variants={cartItemsVariants}
+          animate={showCart ? "open" : "closed"}
+          className="cart-product-container"
+        >
           <LayoutGroup>
             <Reorder.Group
               as="div"
@@ -142,21 +165,24 @@ const Cart = () => {
               values={cartItems}
               onReorder={setCartItems}
             >
-              <AnimatePresence initial={false}>
-                {cartItems.length >= 1 &&
+              <AnimatePresence>
+                {cartItems.length >= 1 ? (
                   cartItems.map((item) => (
                     <motion.div
                       as={Reorder.Item}
                       layout
+                      variants={cartItemVariants}
                       style={{
                         position: "relative", // this is needed to avoid weird overlap
                       }}
-                      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                      initial="closed"
+                      animate="open"
+                      exit="closed"
                       className="cart-product"
                       key={item?._id}
                     >
                       <div className="image">
-                        <img src={urlFor(item?.thumbnail)} alt="" />
+                        <img src={urlFor(item?.thumbnail)} alt="thumbnail" />
                       </div>
 
                       <div className="details">
@@ -208,25 +234,64 @@ const Cart = () => {
                         </div>
                       </div>
                     </motion.div>
-                  ))}
+                  ))
+                ) : (
+                  <motion.div
+                    as={Reorder.Item}
+                    layout
+                    variants={cartItemVariants}
+                    style={{
+                      position: "relative", // this is needed to avoid weird overlap
+                    }}
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                    className="empty-cart"
+                  >
+                    <AiOutlineShopping size={150} />
+
+                    <h3>Your shopping bag is empty</h3>
+                    <div className="btn-row">
+                      <Link href="/">
+                        <motion.button
+                          variants={buttonVariant}
+                          whileHover="hover"
+                          whileTap="tap"
+                          type="button"
+                          onClick={() => setShowCart(false)}
+                          className="call-to-action"
+                        >
+                          Continue Shopping
+                        </motion.button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </Reorder.Group>
           </LayoutGroup>
-        </div>
+        </motion.div>
 
         {cartItems.length >= 1 && (
-          <div className="cart-bottom">
+          <motion.div className="cart-bottom">
             <div className="total">
               <h3>Subtotal</h3>
-              <h3>${totalPrice}</h3>
+              <h3>¥&nbsp;{Math.round((totalPrice + Number.EPSILON) * 100) / 100}</h3>
             </div>
 
-            <div className="btn-container">
-              <button type="button" className="btn" onClick={handleCheckout}>
+            <div className="btn-row">
+              <motion.button
+                variants={buttonVariant}
+                whileHover="hover"
+                whileTap="tap"
+                type="button"
+                className="call-to-action"
+                onClick={handleCheckout}
+              >
                 Pay with Stripe
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         )}
       </motion.div>
     </>
