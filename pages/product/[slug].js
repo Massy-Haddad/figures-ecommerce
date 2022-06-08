@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -58,6 +58,8 @@ const ProductDetails = ({ product, products }) => {
     onAdd(product, qty);
     setShowCart(true);
   };
+
+  const [isClamped, toggleClamp] = useCycle(true, false);
 
   return (
     <motion.div
@@ -124,9 +126,12 @@ const ProductDetails = ({ product, products }) => {
             <motion.h1 variants={fadeInUp} whileInView={fadeInUp}>
               {name}
             </motion.h1>
-            <motion.p variants={fadeInUp} whileInView={fadeInUp}>
-              {details}
-            </motion.p>
+            <motion.div variants={fadeInUp} whileInView={fadeInUp}>
+              <p className={isClamped ? "clamp" : ""}>{details}</p>
+              {isClamped && <span className="read-more" onClick={() => toggleClamp()}>
+                Read More
+              </span>}
+            </motion.div>
 
             <motion.div
               variants={fadeInUp}

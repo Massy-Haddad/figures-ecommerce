@@ -754,6 +754,7 @@ button {
   button {
     cursor: pointer;
     height: 48px;
+    // width: 100%;
     padding: 0 3rem;
     border: none;
     border-radius: 8px;
@@ -766,10 +767,51 @@ button {
     // background: transparent;
     background: #d3d3d3;
     color: #424550;
+  }
 
-    @media screen and (max-width: 900px) {
+  @media screen and (max-width: 900px) {
+    button {
       width: 100%;
       padding: 0;
     }
+
+    margin: 1rem 0 1rem 0;
+  }
+}
+
+.clamp {
+  -webkit-line-clamp: none;
+  -webkit-box-orient: vertical;
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+
+  @media screen and (max-width: 900px) {
+    -webkit-line-clamp: 5 !important;
+  }
+}
+
+.read-more {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  margin-top: -48px;
+  max-width: 100%;
+  padding-bottom: 5px;
+  padding-top: 20px;
+  text-align: center;
+
+  cursor: pointer;
+  color: rgb(146, 153, 161);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: .2s;
+  background: linear-gradient(0deg, #f1f3f5 40%, rgba(250, 250, 250, 0.4));
+
+  @media screen and (max-width: 900px) {
+    opacity: 1;
   }
 }

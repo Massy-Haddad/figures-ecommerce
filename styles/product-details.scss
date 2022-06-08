@@ -115,10 +115,14 @@
 
     .details {
       justify-content: flex-start;
-      padding: 1rem 3rem;
+      padding: 1rem 1.5rem 0 1.5rem;
 
       .inner {
         width: 100%;
+
+        .category {
+          margin-bottom: 0;
+        }
       }
     }
   }
