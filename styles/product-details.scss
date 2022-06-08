@@ -79,20 +79,6 @@
     }
   }
 
-  // tablets
-  @media (max-width: 900px) {
-
-    /* tablet, landscape iPad, lo-res laptops ands desktops */
-    .image {
-      height: 60%;
-
-      img {
-        height: auto;
-        width: 100%;
-      }
-    }
-  }
-
   // tablets and phones
   @media screen and (max-width: 900px) {
     flex-direction: column;
@@ -101,6 +87,15 @@
     .image,
     .details {
       width: 100%;
+    }
+
+    .image {
+      height: 60%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
     }
 
     // less space for image, more for details
@@ -114,10 +109,11 @@
     // }
 
     .details {
-      justify-content: flex-start;
+      justify-content: space-between;
       padding: 1rem 1.5rem 0 1.5rem;
 
       .inner {
+        height: 100%;
         width: 100%;
 
         .category {
