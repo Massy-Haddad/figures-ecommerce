@@ -1,4 +1,5 @@
 import { GiVerticalBanner } from "react-icons/gi";
+import { CgBorderBottom, CgBorderTop } from "react-icons";
 
 export default {
   name: "banner",
@@ -8,23 +9,23 @@ export default {
 
   fields: [
     {
-      name: "title",
-      title: "Title",
+      name: "banner",
+      title: "Banner",
       type: "string",
-    },
-    {
-      name: "image",
-      title: "Image",
-      type: "image",
       options: {
-        hotspot: true,
+        layout: "radio",
+        direction: "horizontal",
+        list: [
+          { title: "Hero", value: "hero" },
+          { title: "Footer", value: "footer" },
+        ],
       },
     },
     {
-      name: "product",
-      title: "Product",
-      type: "reference",
-      to: { type: "product" },
+      name: "products",
+      title: "Products",
+      type: "array",
+      of: [{ type: "reference", to: { type: "product" } }],
     },
     {
       name: "buttonText",
@@ -34,26 +35,6 @@ export default {
     {
       name: "desc",
       title: "Desc",
-      type: "string",
-    },
-    {
-      name: "smallText",
-      title: "SmallText",
-      type: "string",
-    },
-    {
-      name: "midText",
-      title: "MidText",
-      type: "string",
-    },
-    {
-      name: "largeText1",
-      title: "LargeText1",
-      type: "string",
-    },
-    {
-      name: "largeText2",
-      title: "LargeText2",
       type: "string",
     },
     {
@@ -67,4 +48,10 @@ export default {
       type: "string",
     },
   ],
+  
+  preview: {
+    select: {
+      name: "banner"
+    },
+  },
 };
