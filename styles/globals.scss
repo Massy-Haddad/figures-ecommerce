@@ -74,59 +74,6 @@ h2 {
   // padding: 0 2rem;
 }
 
-.hero-banner-container {
-  padding: 10rem 4rem;
-  background-color: #dcdcdc;
-  border-radius: 15px;
-  position: relative;
-  height: 500px;
-  line-height: 0.9;
-  width: 100%;
-  text-align: center;
-  background: url("https://www.tsume-art.com/storage/app/uploads/public/b27/ebc/78b/thumb__1440x500_0_0_crop.png");
-  background-size: cover;
-  filter: blur(0.7px);
-}
-
-.hero-banner-container .beats-solo {
-  font-size: 20px;
-}
-
-.hero-banner-container button {
-  border-radius: 15px;
-  padding: 10px 16px;
-  background-color: #1d1d1b;
-  color: white;
-  border: none;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  z-index: 10000 !important;
-}
-
-.hero-banner-container h3 {
-  font-size: 4rem;
-  margin-top: 4px;
-}
-
-.hero-banner-container h1 {
-  color: white;
-  font-size: 10em;
-  margin-left: -20px;
-  text-transform: uppercase;
-}
-
-.hero-banner-image {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  width: auto;
-  height: 100%;
-  object-fit: contain;
-  border-bottom-left-radius: inherit;
-}
-
 .desc {
   position: absolute;
   right: 5%;
@@ -156,73 +103,6 @@ h2 {
   margin: 40px 0px;
   color: #1d1d1b;
 }
-
-.footer-banner-container {
-  padding: 100px 40px;
-  background-color: #f02d34;
-  border-radius: 15px;
-  position: relative;
-  height: 400px;
-  line-height: 1;
-  color: white;
-  width: 95%;
-  max-width: 1400px;
-  margin: 5rem auto;
-}
-
-.banner-desc {
-  display: flex;
-  justify-content: space-between;
-}
-
-.banner-desc button {
-  border-radius: 15px;
-  padding: 10px 16px;
-  background-color: white;
-  color: red;
-  border: none;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.banner-desc .left h3 {
-  font-weight: 900;
-  font-size: 80px;
-  margin-left: 25px;
-}
-
-.banner-desc .left p {
-  margin: 18px;
-}
-
-.footer-banner-image {
-  position: absolute;
-  bottom: 0;
-  left: 23%;
-  height: 100%;
-  width: auto;
-}
-
-.banner-desc .right {
-  line-height: 1.4;
-}
-
-.banner-desc .right h3 {
-  font-weight: 800;
-  font-size: 60px;
-}
-
-.banner-desc .right p {
-  font-size: 18px;
-}
-
-.banner-desc .right .company-desc {
-  font-size: 14px;
-  font-weight: 300;
-}
-
 
 .footer-container {
   color: #1d1d1b;
@@ -661,33 +541,79 @@ h2 {
   }
 }
 
-// APP
+// Components
+@import "./navbar.scss";
+@import "./cart.scss";
+@import "./banner.scss";
+@import "./works.scss";
+@import "./product.scss";
+@import "./product-details.scss";
+
+// App
 .app__container {
   display: flex;
-  flex-direction: row;
   min-height: 100vh;
   width: 100%;
 }
 
-// SWIPER
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Swiper
 .swiper {
   --swiper-theme-color: #f1f3f5;
+  --swiper-navigation-size: 1rem;
+
+  width: 100%;
   height: 100%;
 
   .swiper-pagination-bullet {
-    width: var(--swiper-pagination-bullet-width,
-        var(--swiper-pagination-bullet-size, 12px));
-    height: var(--swiper-pagination-bullet-height,
-        var(--swiper-pagination-bullet-size, 12px));
+    width: var(
+      --swiper-pagination-bullet-width,
+      var(--swiper-pagination-bullet-size, 12px)
+    );
+    height: var(
+      --swiper-pagination-bullet-height,
+      var(--swiper-pagination-bullet-size, 12px)
+    );
     background: #f1f3f5;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 1.5rem;
+    border-radius: 50%;
+    margin: 0 1rem;
+
+    background-color: #f1f3f5;
+    transition: all 0.2s ease-in-out;
+
+    &::after {
+      color: #2d89fa;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: #2d89fa;
+
+      &::after {
+        color: #f1f3f5;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
   }
 }
 
-@import "./navbar.scss";
-@import "./cart.scss";
-@import "./product.scss";
-@import "./product-details.scss";
-
+// Utility
 button {
   cursor: pointer;
   border: none;
@@ -772,7 +698,7 @@ button {
   @media screen and (max-width: 900px) {
     button {
       width: 100%;
-      padding: 0;
+      padding: 0 2rem;
     }
 
     margin: 1rem 0 1rem 0;
@@ -808,10 +734,14 @@ button {
   color: rgb(146, 153, 161);
   font-size: 1rem;
   font-weight: 500;
-  transition: .2s;
+  transition: 0.2s;
   background: linear-gradient(0deg, #f1f3f5 40%, rgba(250, 250, 250, 0.4));
 
   @media screen and (max-width: 900px) {
     opacity: 1;
   }
+}
+
+.glow {
+  text-shadow: 0 0 3px invert($color: #f1f3f5);
 }

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
+import Works from "../components/works";
 
 const stagger = {
   animate: {
@@ -12,12 +13,21 @@ const stagger = {
   },
 };
 
-const Home = ({ products, bannerData }) => (
-  <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
-    <HeroBanner
-      id="HeroBanner"
-      heroBanner={bannerData.length && bannerData[1]}
-    />
+const Home = ({ products, works, bannerData }) => (
+  <motion.div
+    initial="initial"
+    animate="animate"
+    exit={{ opacity: 0 }}
+    className="app_flex"
+  >
+    <motion.div variants={stagger} className="app__container hero-banner">
+      <HeroBanner
+        id="HeroBanner"
+        heroBanner={bannerData.length && bannerData[1]}
+      />
+
+      <Works works={works} />
+    </motion.div>
 
     <div id="products" className="products-heading">
       <h2>Hottest statues</h2>
@@ -35,7 +45,7 @@ const Home = ({ products, bannerData }) => (
 );
 
 export const getServerSideProps = async () => {
-  const query = `*[_type == "product"] | order(price asc){
+  const productsQuery = `*[_type == "product"] | order(price asc){
     thumbnail,
     name,
     slug,
@@ -44,13 +54,24 @@ export const getServerSideProps = async () => {
     "work": work->,
     "manufactor": manufactor->,
   }`;
-  const products = await client.fetch(query);
+  const products = await client.fetch(productsQuery);
 
-  const bannerQuery = '*[_type == "banner"]';
+  const worksQuery = '*[_type == "work"]';
+  const works = await client.fetch(worksQuery);
+
+  const bannerQuery = `*[_type == "banner"]{
+    ...,
+    products[]->{
+      ...,
+      work-> ,
+      manufactor->
+    }
+  }`;
+
   const bannerData = await client.fetch(bannerQuery);
 
   return {
-    props: { products, bannerData },
+    props: { products, works, bannerData },
   };
 };
 

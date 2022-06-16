@@ -97,15 +97,17 @@ const ProductDetails = ({ product, products }) => {
           >
             {image.map((item, i) => (
               <SwiperSlide>
-                <motion.img
-                  animate={{ x: 0, opacity: 1 }}
-                  initial={{ x: 300, opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.2, stiffness: 1000 }}
-                  key={i}
-                  src={urlFor(item)}
-                  alt="figure"
-                />
+                {item && (
+                  <motion.img
+                    animate={{ x: 0, opacity: 1 }}
+                    initial={{ x: 300, opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ delay: 0.2, stiffness: 1000 }}
+                    key={i}
+                    src={urlFor(item)}
+                    alt="figure"
+                  />
+                )}
               </SwiperSlide>
             ))}
           </Swiper>
@@ -128,9 +130,11 @@ const ProductDetails = ({ product, products }) => {
             </motion.h1>
             <motion.div variants={fadeInUp} whileInView={fadeInUp}>
               <p className={isClamped ? "clamp" : ""}>{details}</p>
-              {isClamped && <span className="read-more" onClick={() => toggleClamp()}>
-                Read More
-              </span>}
+              {isClamped && (
+                <span className="read-more" onClick={() => toggleClamp()}>
+                  Read More
+                </span>
+              )}
             </motion.div>
 
             <motion.div
