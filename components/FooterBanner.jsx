@@ -43,7 +43,7 @@ const FooterBanner = ({
           spaceBetween={0}
           effect={"cards"}
           grabCursor={true}
-          Autoplay
+          // Autoplay
           autoplay={{
             delay: 6000,
             disableOnInteraction: false,
