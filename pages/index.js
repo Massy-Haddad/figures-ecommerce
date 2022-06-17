@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
-import Works from "../components/works";
+import Works from "../components/Works";
 
 const stagger = {
   animate: {

@@ -90,7 +90,7 @@ const ProductDetails = ({ product, products }) => {
             modules={[Pagination, Keyboard, Autoplay]}
           >
             {image.map((item, i) => (
-              <SwiperSlide>
+              <SwiperSlide key={item?._id + i}>
                 {item && (
                   <motion.img
                     animate={{ x: 0, opacity: 1 }}
