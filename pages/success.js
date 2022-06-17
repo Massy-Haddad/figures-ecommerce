@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { BsBagCheckFill } from "react-icons/bs";
 
 import { useStateContext } from "../context/StateContext";
 import { runFireworks } from "../lib/utils";
+import { buttonVariant } from "../lib/animations";
 
 const success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
@@ -19,7 +21,7 @@ const success = () => {
   }, []);
 
   return (
-    <div className="success-wrapper">
+    <div className="app__container app__flex success-wrapper">
       <div className="success">
         <p className="icon">
           <BsBagCheckFill />
@@ -37,9 +39,18 @@ const success = () => {
         </p>
 
         <Link href="/">
-          <button type="button" width="300px" className="btn">
-            Continue Shopping
-          </button>
+          <div className="btn-row">
+            <motion.button
+              variants={buttonVariant}
+              whileHover="hover"
+              whileTap="tap"
+              className="call-to-action"
+              type="button"
+              width="300px"
+            >
+              Continue Shopping
+            </motion.button>
+          </div>
         </Link>
       </div>
     </div>

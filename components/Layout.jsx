@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 
       <main className="main-container">{children}</main>
 
-      {router.asPath === "/" || router.asPath === "/#products" && (
+      {(router.asPath === "/" || router.asPath === "/#products") && (
         <footer>
           <Footer />
         </footer>

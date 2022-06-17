@@ -328,26 +328,30 @@ h2 {
 .success-wrapper,
 .cancel-wrapper {
   background-color: white;
-  min-height: 60vh;
+  min-height: 100vh;
 }
 
 .success,
 .cancel {
   width: 1000px;
   margin: auto;
-  margin-top: 160px;
-  background-color: #dcdcdc;
   padding: 50px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  background: rgba(151, 198, 255, 0.1);
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .success .icon {
-  color: green;
-  font-size: 40px;
+  color: #77dd77;
+  font-size: 5rem;
 }
 
 .success h2 {
@@ -379,7 +383,7 @@ h2 {
 
 .success .description .email {
   margin-left: 5px;
-  color: #f02d34;
+  color: #2d89fa;
 }
 
 .product-max-qty {
