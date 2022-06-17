@@ -85,22 +85,12 @@ const HeroBanner = ({ heroBanner }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* <Image
+      <Image
         src="/assets/borders.png"
         alt="borders"
         layout="fill"
         objectFit="contain"
-        style={{
-          position: "relative",
-          width: "100%",
-          paddingBottom: "20%",
-          border: "1px solid black 0 0 0 30px",
-        }}
-      /> */}
-      <img
-        src="http://localhost:3000/_next/image?url=%2Fassets%2Fborders.png&w=1920&q=75"
-        alt=""
-        className="border"
+        className="border-bottom"
       />
     </motion.div>
   );
