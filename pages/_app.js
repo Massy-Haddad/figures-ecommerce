@@ -1,16 +1,19 @@
 import React from "react";
-
-import { Layout } from "../components";
-import "../styles/globals.scss";
-import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
+import { AnimatePresence } from "framer-motion";
 
-function MyApp({ Component, pageProps }) {
+import "../styles/globals.scss";
+import { Layout } from "../components";
+import { StateContext } from "../context/StateContext";
+
+function MyApp({ Component, pageProps, router }) {
   return (
     <StateContext>
       <Layout>
         <Toaster />
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
       </Layout>
     </StateContext>
   );

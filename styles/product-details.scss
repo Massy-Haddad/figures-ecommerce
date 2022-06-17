@@ -1,0 +1,125 @@
+.product-details {
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  // margin-top: 4.2rem;
+
+  .image,
+  .details {
+    @include transition(0.2s);
+    height: 100%;
+    display: flex;
+    width: 50%;
+  }
+
+  .image {
+    // background: #dfdfdf;
+    max-height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+
+  .details {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    .inner {
+      @include transition(0.3s);
+      width: 75%;
+      position: relative;
+
+      .category {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        color: #424550;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        svg {
+          @include transition(0.3s);
+          margin-right: 0.5rem;
+        }
+
+        &:hover svg {
+          margin-right: 1rem;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        color: #424550;
+        font-weight: 300;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+      .qty-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  // tablets and phones
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    width: 100%;
+
+    .image,
+    .details {
+      width: 100%;
+    }
+
+    .image {
+      height: 60%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    // less space for image, more for details
+    // .image {
+    //   height: 50vh;
+
+    //   img {
+    //     height: auto;
+    //     width: 100%;
+    //   }
+    // }
+
+    .details {
+      justify-content: space-between;
+      padding: 1rem 1.5rem 0 1.5rem;
+
+      .inner {
+        height: 100%;
+        width: 100%;
+
+        .category {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

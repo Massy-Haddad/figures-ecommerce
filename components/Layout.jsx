@@ -1,25 +1,28 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-
+import { Navbar, Footer } from "./../components";
 const Layout = ({ children }) => {
+  const router = useRouter();
+
   return (
     <div className="layout">
       <Head>
         <title>Figure Store</title>
       </Head>
 
-      <header>
+      <nav>
         <Navbar />
-      </header>
+      </nav>
 
       <main className="main-container">{children}</main>
 
-      <footer>
-        <Footer />
-      </footer>
+      {router.asPath === "/" || router.asPath === "/#products" && (
+        <footer>
+          <Footer />
+        </footer>
+      )}
     </div>
   );
 };

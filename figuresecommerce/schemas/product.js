@@ -1,8 +1,20 @@
+import { GiLaurelCrown } from "react-icons/gi";
+
 export default {
   name: "product",
   title: "Product",
   type: "document",
+  icon: GiLaurelCrown,
+
   fields: [
+    {
+      title: "Thumbnail",
+      name: "thumbnail",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
     {
       name: "image",
       title: "Image",
@@ -32,9 +44,41 @@ export default {
       type: "number",
     },
     {
+      title: "Release date",
+      name: "releaseDate",
+      type: "date",
+    },
+    {
+      name: "work",
+      title: "Work",
+      type: "reference",
+      to: { type: "work" },
+    },
+    {
       name: "details",
       title: "Details",
       type: "string",
     },
+    {
+      name: "specifications",
+      title: "Specifications",
+      type: "string",
+    },
+    {
+      name: "manufactor",
+      title: "Manufactor",
+      type: "reference",
+      to: { type: "manufactor" },
+    },
   ],
+  initialValue: {
+    specifications: "none",
+  },
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "manufactor.name",
+      media: "thumbnail",
+    },
+  },
 };
