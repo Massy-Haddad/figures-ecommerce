@@ -1,5 +1,6 @@
 import React from "react";
-import { AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
+import Link from "next/link";
+import { AiFillGithub, AiFillFolderOpen } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -7,8 +8,12 @@ const Footer = () => {
       <p>2022 Figure Store - All rights reserved</p>
 
       <p className="icons">
-        <AiFillInstagram />
-        <AiOutlineTwitter />
+        <Link href="https://github.com/Massy-Haddad">
+          <AiFillGithub />
+        </Link>
+        <Link href="https://massyhaddad.netlify.app">
+          <AiFillFolderOpen />
+        </Link>
       </p>
     </div>
   );
