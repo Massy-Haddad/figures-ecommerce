@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { motion, useCycle } from "framer-motion";
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiFillStar,
-  AiOutlineStar,
-} from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 
 // Swiper
@@ -18,7 +13,6 @@ import "swiper/css/pagination";
 import { useStateContext } from "../../context/StateContext";
 import { client, urlFor } from "../../lib/client";
 import { buttonVariant } from "../../lib/animations";
-import { Product } from "../../components";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
