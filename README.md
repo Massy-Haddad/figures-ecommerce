@@ -12,7 +12,7 @@ but thanks to [Sanity](https://www.sanity.io/), a headless CMS, I can modify any
 <p align="center">
   <b>Here is a picture of the current version :</b>
   <br /><br />
-  <img src="doc/massy-figures-ecommerce.png">
+  <a href="https://massy-store.vercel.app"><img src="doc/massy-figures-ecommerce.png"></a>
    <br /><br />
   <b>  <a href="https://massy-store.vercel.app">Click Here - to be redirected to the deployed version.</a></b>
 </p>
