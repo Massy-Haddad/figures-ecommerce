@@ -1,34 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [Massy Store](https://massy-store.vercel.app)
 
-## Getting Started
+### It's the first time I've created an e-commerce website and I'm very proud to show the result.
+<br />
 
-First, run the development server:
+The theme for this one will be pop culture action figures, 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+but thanks to [Sanity](https://www.sanity.io/), a headless CMS, I can modify any product to be whatever I want it to be.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br /><br /><br />
+<p align="center">
+  <b>Here is a picture of the current version :</b>
+  <br /><br />
+  <a href="https://massy-store.vercel.app"><img src="doc/massy-figures-ecommerce.png"></a>
+   <br /><br />
+  <b>  <a href="https://massy-store.vercel.app">Click Here - to be redirected to the deployed version.</a></b>
+</p>
