@@ -70,9 +70,15 @@ export const getServerSideProps = async () => {
 
   const bannerData = await client.fetch(bannerQuery);
 
-  return {
-    props: { products, works, bannerData },
-  };
+  if (!products && !works && !bannerData) {
+    return {
+      notFound: true,
+    };
+  } else {
+    return {
+      props: { products, works, bannerData },
+    };
+  }
 };
 
 export default Home;
