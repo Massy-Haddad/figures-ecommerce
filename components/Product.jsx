@@ -41,6 +41,7 @@ const Product = ({
               unoptimized={() => src.urlThumbnail}
               src={src.urlThumbnail}
               layout="fill"
+              alt="product-image"
             />
           </div>
 
@@ -50,7 +51,8 @@ const Product = ({
               src={src.urlWork}
               layout="fill"
               objectFit="contain"
-            />
+              alt="work"
+              />
           </div>
 
           <div className="_product-item-content">
@@ -64,6 +66,7 @@ const Product = ({
                   objectFit="contain"
                   width={150}
                   height={100}
+                  alt="manufactor"
                 />
                 By&nbsp;{manufactor.name}
               </div>
