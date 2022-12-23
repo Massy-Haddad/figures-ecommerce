@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps, router }) {
     <StateContext>
       <Layout>
         <Toaster />
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence exitBeforeEnter initial={true}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
       </Layout>

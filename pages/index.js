@@ -1,21 +1,14 @@
 import React, { useState } from "react";
+
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
-import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
 import Works from "../components/Works";
 
-import { buttonVariant } from "../lib/animations";
+import { client } from "../lib/client";
 import { loadData } from "./api/product";
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+import { buttonVariant, fadeInUp, stagger } from "../lib/animations";
 
 const LOAD_MORE_STEP = 4;
 
@@ -60,6 +53,7 @@ const Home = ({ initProducts, total, works, bannerData }) => {
       initial="initial"
       animate="animate"
       exit={{ opacity: 0 }}
+      variants={fadeInUp}
       className="app_flex"
     >
       <motion.div variants={stagger} className="app__container hero-banner">
@@ -76,7 +70,13 @@ const Home = ({ initProducts, total, works, bannerData }) => {
         <p>High quality statue and action figures</p>
       </div>
 
-      <motion.div variants={stagger} className="_products-container">
+      <motion.div
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="_products-container"
+      >
         {products?.map((product, index) => (
           <Product key={product._id + index} product={product} />
         ))}
@@ -85,7 +85,6 @@ const Home = ({ initProducts, total, works, bannerData }) => {
       <div
         className="btn-row"
         style={{ maxHeight: "50%", marginBottom: "5rem" }}
-        disabled={true}
       >
         {showLoadMore && (
           <motion.button

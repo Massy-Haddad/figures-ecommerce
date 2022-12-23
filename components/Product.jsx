@@ -4,24 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { urlFor } from "../lib/client";
-import product from "../pages/api/product";
-
-const easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  initial: {
-    y: 100,
-    opacity: 0,
-  },
-  animate: {
-    y: [100, 50, 0],
-    opacity: [0, 0, 1],
-    transition: {
-      duration: 0.5,
-      ease: easing,
-    },
-  },
-};
+import { fadeInUp, stagger } from "../lib/animations";
 
 const Product = ({
   product: { thumbnail, name, slug, price, work, manufactor },
@@ -33,7 +16,8 @@ const Product = ({
   };
 
   return (
-    <motion.div variants={fadeInUp} className="_product-wrapper">
+    <motion.div 
+      variants={stagger} className="_product-wrapper">
       <Link scroll={true} href={`/product/${slug.current}`}>
         <div className="_product-item">
           <div className="_product-item-image">
@@ -52,7 +36,7 @@ const Product = ({
               layout="fill"
               objectFit="contain"
               alt="work"
-              />
+            />
           </div>
 
           <div className="_product-item-content">

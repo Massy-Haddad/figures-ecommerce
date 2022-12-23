@@ -33,7 +33,13 @@ const FooterBanner = ({
   footerBanner: { products, buttonText, desc, discount, saleTime },
 }) => {
   return (
-    <motion.div variants={fadeInUp} className="footer-banner-container">
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+      className="footer-banner-container"
+    >
       <div className="app__flex footer-banner">
         <Swiper
           // Style
