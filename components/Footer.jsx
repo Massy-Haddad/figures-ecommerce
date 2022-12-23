@@ -8,12 +8,12 @@ const Footer = () => {
       <p>2022 Figure Store - All rights reserved</p>
 
       <p className="icons">
-        <Link href="https://github.com/Massy-Haddad">
+        <a href="https://github.com/Massy-Haddad">
           <AiFillGithub />
-        </Link>
-        <Link href="https://massyhaddad.netlify.app">
+        </a>
+        <a href="https://massyhaddad.netlify.app">
           <AiFillFolderOpen />
-        </Link>
+        </a>
       </p>
     </div>
   );

@@ -18,7 +18,7 @@ export default async function product(req, res) {
 
 export async function loadData(start, end) {
   const query = `{
-    "products": *[_type == "product"][${start}...${end}] | order(price desc){
+    "products": *[_type == "product"][${start}...${end}] | order(price asc){
       thumbnail,
       name,
       slug,
