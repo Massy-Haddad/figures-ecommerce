@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
@@ -26,6 +27,10 @@ const Home = ({ initProducts, total, works, bannerData }) => {
   const showLoadMore = total > loadedAmount;
 
   const getMoreProducts = async () => {
+    const loadingToast = toast.loading("Please wait...", {
+      position: "bottom-center",
+      duration: 1000,
+    });
     setLoading(true);
 
     try {
@@ -35,12 +40,18 @@ const Home = ({ initProducts, total, works, bannerData }) => {
         }`
       ).then((response) => response.json());
 
+      toast.success("Products fetched", {
+        id: loadingToast,
+      });
+
       setLoadedAmount(loadedAmount + LOAD_MORE_STEP);
       setProducts([...products, ...data.products]);
       setLoading(false);
     } catch (error) {
-      console.log(error);
       setLoading(false);
+      toast.error("Something went wrong", {
+        id: loadingToast,
+      });
     }
   };
 
@@ -71,7 +82,11 @@ const Home = ({ initProducts, total, works, bannerData }) => {
         ))}
       </motion.div>
 
-      <div className="btn-row">
+      <div
+        className="btn-row"
+        style={{ maxHeight: "50%", marginBottom: "5rem" }}
+        disabled={true}
+      >
         {showLoadMore && (
           <motion.button
             variants={buttonVariant}

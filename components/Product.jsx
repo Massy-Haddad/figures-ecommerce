@@ -38,7 +38,7 @@ const Product = ({
         <div className="_product-item">
           <div className="_product-item-image">
             <Image
-              loader={() => src.urlThumbnail}
+              unoptimized={() => src.urlThumbnail}
               src={src.urlThumbnail}
               layout="fill"
             />
@@ -46,7 +46,7 @@ const Product = ({
 
           <div className="_product-item-license">
             <Image
-              loader={() => src.urlWork}
+              unoptimized={() => src.urlWork}
               src={src.urlWork}
               layout="fill"
               objectFit="contain"
@@ -59,7 +59,7 @@ const Product = ({
               <div className="title">{name}</div>
               <div className="subtitle">
                 <Image
-                  loader={() => src.urlManufactor}
+                  unoptimized={() => src.urlManufactor}
                   src={src.urlManufactor}
                   objectFit="contain"
                   width={150}

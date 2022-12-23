@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { AiFillGithub, AiFillFolderOpen } from "react-icons/ai";
 
 const Footer = () => {
@@ -11,7 +10,7 @@ const Footer = () => {
         <a href="https://github.com/Massy-Haddad">
           <AiFillGithub />
         </a>
-        <a href="https://massyhaddad.netlify.app">
+        <a target="blank" href="https://massyhaddad.netlify.app">
           <AiFillFolderOpen />
         </a>
       </p>
