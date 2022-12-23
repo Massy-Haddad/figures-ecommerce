@@ -49,7 +49,7 @@ const HeroBanner = ({ heroBanner }) => {
           watchVisibility: true,
         }}
         // Controls
-        navigation={true}
+        navigation={false}
         keyboard={{
           enabled: true,
         }}
