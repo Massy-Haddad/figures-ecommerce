@@ -13,7 +13,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "dark-mode",
-    "@sanity/color-input"
+    "@sanity/color-input",
+    "@sanity/vision"
   ],
   "env": {
     "development": {

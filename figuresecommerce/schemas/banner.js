@@ -51,7 +51,8 @@ export default {
   
   preview: {
     select: {
-      name: "banner"
+      title: 'banner',
+      media: 'products.0.thumbnail'
     },
   },
 };
