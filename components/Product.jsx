@@ -26,7 +26,7 @@ const Product = ({
 }) => {
   return (
     <motion.div variants={fadeInUp} className="_product-wrapper">
-      <Link href={`/product/${slug.current}`}>
+      <Link scroll={true} href={`/product/${slug.current}`}>
         <div className="_product-item">
           <div className="_product-item-image">
             <img src={urlFor(thumbnail)} alt={name} />
