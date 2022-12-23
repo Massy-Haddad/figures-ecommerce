@@ -7,10 +7,10 @@ const Footer = () => {
       <p>2022 Figure Store - All rights reserved</p>
 
       <p className="icons">
-        <a href="https://github.com/Massy-Haddad">
+        <a target="blank" href="https://github.com/Massy-Haddad" rel="author">
           <AiFillGithub />
         </a>
-        <a target="blank" href="https://massyhaddad.netlify.app">
+        <a target="blank" href="https://massyhaddad.netlify.app" rel="author">
           <AiFillFolderOpen />
         </a>
       </p>
