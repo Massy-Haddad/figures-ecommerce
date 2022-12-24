@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
-import { motion } from "framer-motion";
+import { motion, LayoutGroup, Reorder } from "framer-motion";
 import toast from "react-hot-toast";
-
-import { Product, FooterBanner, HeroBanner } from "../components";
-import Works from "../components/Works";
 
 import { client } from "../lib/client";
 import { loadData } from "./api/product";
-import { buttonVariant, fadeInUp, stagger } from "../lib/animations";
+import { Product, FooterBanner, HeroBanner, Works } from "../components";
+import {
+  buttonVariant,
+  fadeInUp,
+  stagger,
+  productItemsVariants,
+} from "../lib/animations";
 
 const LOAD_MORE_STEP = 4;
 
@@ -71,15 +74,27 @@ const Home = ({ initProducts, total, works, bannerData }) => {
       </div>
 
       <motion.div
-        initial="initial"
-        whileInView="animate"
+        initial="closed"
+        whileInView="open"
         viewport={{ once: true }}
-        variants={fadeInUp}
+        variants={productItemsVariants}
         className="_products-container"
       >
-        {products?.map((product, index) => (
-          <Product key={product._id + index} product={product} />
-        ))}
+        <LayoutGroup>
+          <Reorder.Group
+            as="div"
+            axis="y"
+            values={products}
+            onReorder={getMoreProducts}
+          ></Reorder.Group>
+          {products?.map((product, index) => (
+            <Product
+              key={product._id + index}
+              product={product}
+              index={index}
+            />
+          ))}
+        </LayoutGroup>
       </motion.div>
 
       <div

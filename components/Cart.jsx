@@ -13,85 +13,13 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import { getStripe } from "../lib";
-import { buttonVariant } from "./../lib/animations";
-
-const cartVariants = {
-  open: {
-    x: "0%",
-    transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 0.5,
-      // staggerChildren: stagger,
-    },
-  },
-  closed: {
-    x: "100%",
-    transition: {
-      // delay: 0.5,
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-      // staggerChildren: stagger,
-    },
-  },
-};
-
-const filterVariants = {
-  open: {
-    opacity: 1,
-    display: "block",
-    visibility: "visible",
-    transition: {
-      duration: 1,
-    },
-  },
-  closed: {
-    opacity: 0,
-    display: "none",
-    transition: {
-      duration: 1,
-    },
-  },
-};
-
-const cartItemsVariants = {
-  open: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.07,
-      delayChildren: 0.02,
-      x: { stiffness: 1000, velocity: -100 },
-    },
-  },
-  closed: {
-    x: 50,
-    opacity: 0,
-    transition: {
-      staggerChildren: 0.5,
-      staggerDirection: -1,
-      x: { stiffness: 1000 },
-    },
-  },
-};
-
-const cartItemVariants = {
-  open: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      x: { stiffness: 1000, velocity: -100 },
-    },
-  },
-  closed: {
-    x: 50,
-    opacity: 0,
-    transition: {
-      x: { stiffness: 1000 },
-    },
-  },
-};
+import {
+  cartVariants,
+  cartItemVariants,
+  cartItemsVariants,
+  filterVariants,
+  buttonVariant,
+} from "./../lib/animations";
 
 const Cart = () => {
   const {
@@ -276,7 +204,9 @@ const Cart = () => {
           <motion.div className="cart-bottom">
             <div className="total">
               <h3>Subtotal</h3>
-              <h3>¥&nbsp;{Math.round((totalPrice + Number.EPSILON) * 100) / 100}</h3>
+              <h3>
+                ¥&nbsp;{Math.round((totalPrice + Number.EPSILON) * 100) / 100}
+              </h3>
             </div>
 
             <div className="btn-row">

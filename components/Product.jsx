@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Reorder } from "framer-motion";
 
 import { urlFor } from "../lib/client";
-import { fadeInUp, stagger } from "../lib/animations";
+import { productItemsVariants } from "../lib/animations";
 
 const Product = ({
-  product: { thumbnail, name, slug, price, work, manufactor },
+  product: { _id, thumbnail, name, slug, price, work, manufactor },
 }) => {
   const src = {
     urlWork: urlFor(work.logo).url(),
@@ -16,8 +16,19 @@ const Product = ({
   };
 
   return (
-    <motion.div 
-      variants={stagger} className="_product-wrapper">
+    <motion.div
+      key={_id}
+      as={Reorder.Item}
+      variants={productItemsVariants}
+      initial="closed"
+      animate="open"
+      exit="closed"
+      className="_product-wrapper"
+      style={{
+        position: "relative", // this is needed to avoid weird overlap
+      }}
+      layout
+    >
       <Link scroll={true} href={`/product/${slug.current}`}>
         <div className="_product-item">
           <div className="_product-item-image">

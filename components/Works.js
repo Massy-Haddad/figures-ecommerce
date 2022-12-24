@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { buttonVariant, fadeInUp } from "../lib/animations";
+import { fadeInUp } from "../lib/animations";
 
 const Works = ({ works }) => {
   return (
