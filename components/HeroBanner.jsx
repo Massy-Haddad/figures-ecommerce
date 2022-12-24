@@ -65,7 +65,11 @@ const HeroBanner = ({ heroBanner }) => {
                 </motion.button>
               </div>
             </div>
-            <img key={i} src={urlFor(item?.thumbnail)} alt="banner-image" />
+            {item?.thumbnail ? (
+              <img key={i} src={urlFor(item?.thumbnail)} alt="banner-image" />
+            ) : (
+              <Loading />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

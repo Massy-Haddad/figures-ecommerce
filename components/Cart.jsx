@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import { getStripe } from "../lib";
+import { Loading } from "../components";
 import {
   cartVariants,
   cartItemVariants,
@@ -110,7 +111,11 @@ const Cart = () => {
                       key={item?._id}
                     >
                       <div className="image">
-                        <img src={urlFor(item?.thumbnail)} alt="thumbnail" />
+                        {item?.thumbnail ? (
+                          <img src={urlFor(item?.thumbnail)} alt="thumbnail" />
+                        ) : (
+                          <Loading />
+                        )}
                       </div>
 
                       <div className="details">

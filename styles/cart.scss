@@ -101,6 +101,9 @@
 
       .image {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        
         height: 100%;
         width: 25%;
         border-radius: inherit;

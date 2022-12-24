@@ -32,22 +32,30 @@ const Product = ({
       <Link scroll={true} href={`/product/${slug.current}`}>
         <div className="_product-item">
           <div className="_product-item-image">
-            <Image
-              unoptimized={() => src.urlThumbnail}
-              src={src.urlThumbnail}
-              layout="fill"
-              alt="product-image"
-            />
+            {src.urlThumbnail ? (
+              <Image
+                unoptimized={() => src.urlThumbnail}
+                src={src.urlThumbnail}
+                layout="fill"
+                alt="product-image"
+              />
+            ) : (
+              <Loading />
+            )}
           </div>
 
           <div className="_product-item-license">
-            <Image
-              unoptimized={() => src.urlWork}
-              src={src.urlWork}
-              layout="fill"
-              objectFit="contain"
-              alt="work"
-            />
+            {src.urlWork ? (
+              <Image
+                unoptimized={() => src.urlWork}
+                src={src.urlWork}
+                layout="fill"
+                objectFit="contain"
+                alt="work"
+              />
+            ) : (
+              <Loading />
+            )}
           </div>
 
           <div className="_product-item-content">
@@ -55,14 +63,18 @@ const Product = ({
               <div className="surtitle">{work.name}</div>
               <div className="title">{name}</div>
               <div className="subtitle">
-                <Image
-                  unoptimized={() => src.urlManufactor}
-                  src={src.urlManufactor}
-                  objectFit="contain"
-                  width={150}
-                  height={100}
-                  alt="manufactor"
-                />
+                {src.urlManufactor ? (
+                  <Image
+                    unoptimized={() => src.urlManufactor}
+                    src={src.urlManufactor}
+                    objectFit="contain"
+                    width={150}
+                    height={100}
+                    alt="manufactor"
+                  />
+                ) : (
+                  <Loading />
+                )}
                 By&nbsp;{manufactor.name}
               </div>
             </div>

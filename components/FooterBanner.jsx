@@ -66,7 +66,11 @@ const FooterBanner = ({
         >
           {products.map((item, i) => (
             <SwiperSlide key={item._id} className="app__flex">
-              <img key={i} src={urlFor(item?.thumbnail)} alt="banner-image" />
+              {item?.thumbnail ? (
+                <img key={i} src={urlFor(item?.thumbnail)} alt="banner-image" />
+              ) : (
+                <Loading />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
